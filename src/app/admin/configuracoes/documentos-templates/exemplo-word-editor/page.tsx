@@ -266,10 +266,6 @@ export default function ExemploWordEditorPage() {
                     placeholder="Digite seu documento seguindo as normas ABNT. Use os elementos legislativos na toolbar para formatação automática..."
                     onChange={handleContentChange}
                     onSave={handleSave}
-                    showRulers={true}
-                    pageFormat="A4"
-                    zoom={100}
-                    autoFocus={false}
                   />
                 </div>
               ) : (

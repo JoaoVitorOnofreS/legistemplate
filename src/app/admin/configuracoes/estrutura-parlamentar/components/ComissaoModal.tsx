@@ -107,7 +107,7 @@ export default function ComissaoModal({
     }
   }, [comissaoAtual, isOpen])
 
-  const handleChange = (field: keyof ComissaoForm, value: any) => {
+  const handleChange = (field: keyof ComissaoForm, value: unknown) => {
     setForm(prev => ({ ...prev, [field]: value }))
     
     // Limpar erro do campo ao alterar
@@ -177,12 +177,12 @@ export default function ComissaoModal({
     )
 
     if (cargosSemMembros.length > 0) {
-      newErrors.membrosIds = 'Presidente, Vice-Presidente e Relator devem estar incluídos nos membros'
+      newErrors.membrosIds = ['Presidente, Vice-Presidente e Relator devem estar incluídos nos membros']
     }
 
     // Mínimo de membros
     if (form.membrosIds.length < 3) {
-      newErrors.membrosIds = 'Comissão deve ter pelo menos 3 membros'
+      newErrors.membrosIds = ['Comissão deve ter pelo menos 3 membros']
     }
 
     setErrors(newErrors)
@@ -244,6 +244,7 @@ export default function ComissaoModal({
     return TIPOS_COMISSAO.find(t => t.value === tipo) || TIPOS_COMISSAO[0]
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const getStatusConfig = (status: Comissao['status']) => {
     return STATUS_COMISSAO.find(s => s.value === status) || STATUS_COMISSAO[0]
   }

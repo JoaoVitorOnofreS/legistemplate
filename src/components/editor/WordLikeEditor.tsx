@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useRef, useCallback, useEffect } from 'react'
+import React, {  useCallback, useEffect } from 'react'
 import { LexicalComposer } from '@lexical/react/LexicalComposer'
 import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin'
 import { ContentEditable } from '@lexical/react/LexicalContentEditable'
@@ -10,7 +10,6 @@ import { LinkPlugin } from '@lexical/react/LexicalLinkPlugin'
 import { ListPlugin } from '@lexical/react/LexicalListPlugin'
 import { OnChangePlugin } from '@lexical/react/LexicalOnChangePlugin'
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext'
-import { mergeRegister } from '@lexical/utils'
 import { $generateHtmlFromNodes } from '@lexical/html'
 import { 
   HeadingNode,
@@ -23,10 +22,6 @@ import {
   FORMAT_TEXT_COMMAND,
   UNDO_COMMAND,
   REDO_COMMAND,
-  SELECTION_CHANGE_COMMAND,
-  COMMAND_PRIORITY_CRITICAL,
-  EditorState,
-  LexicalEditor as BaseLexicalEditor,
   $getRoot,
   $createParagraphNode,
 } from 'lexical'
@@ -38,11 +33,7 @@ import './WordLikeEditor.css'
 
 // Icons and other constants can remain largely the same for the toolbar
 import {
-  Undo2, Redo2, Bold, Italic, Underline, Strikethrough, List, ListOrdered,
-  Image, ChevronDown, Type, Heading1, Heading2, Heading3, Quote, Code,
-  Upload, Link as LinkIcon, FileText, Scale, FileCheck, MessageSquare, PenTool, X, Check,
-  Ruler, AlignLeft, AlignCenter, AlignRight, AlignJustify, FileImage, Table,
-  Printer, ZoomIn, ZoomOut, Save, Eye, Copy, Plus, Scissors, FileText as FilePages, Minus
+  Undo2, Redo2, Bold, Italic, Underline, 
 } from 'lucide-react'
 
 // Tema atualizado para incluir a página e outros elementos
@@ -167,7 +158,6 @@ export default function WordLikeEditor({
   initialContent,
   placeholder = 'Digite seu documento...',
   onChange,
-  onSave,
   readOnly = false,
 }: {
   initialContent?: string
